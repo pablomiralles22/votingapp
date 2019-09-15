@@ -1,0 +1,29 @@
+<% include ../partials/head %>
+<body>
+    <% include ../partials/header %>
+    <div class="container main mt-5">
+        <h1><%= poll.title %></h1>
+        <% if(user.voted){ %>
+            <p>Ya has votado. Los resultados actuales son:</p>
+            <% for(let i=0; i<poll.options.length; i++){ %>
+                <div>
+                    <span><%= poll.options[i].title %> | <%= poll.options[i].cont %> votos</span>
+                </div>
+            <% } %>
+        <% }else{ %>
+            <form action="/vote" method="POST">
+                <div class="form-group">
+                    <% for(let i=0; i<poll.options.length; i++){ %>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="<%= 'customCheck' + i %>" name="<%= i %>">
+                                <label class="custom-control-label" for="<%= 'customCheck' + i %>"> <%= poll.options[i].title %> | <%= poll.options[i].cont %> votos</label>
+                            </div>
+                    <% } %>
+                    <input type="submit" class="btn btn-outline-info mt-3">
+                </div>    
+            </form>
+        <% } %>        
+    </div>
+    
+</body>
+</html>

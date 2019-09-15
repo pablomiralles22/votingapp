@@ -1,0 +1,40 @@
+<% include ../partials/head %>
+<body>
+    <% include ../partials/header %>
+    <div class="container main">
+        <div class="row">
+            <div class="col-sm-6 mt-5">
+                <form method="POST" action="/login">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="username" id="name1" placeholder="Xemanu Rules..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" id="password1" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info">Log in</button>
+                </form>
+            </div>
+            <div class="col-sm-6 mt-5">
+                <form method="POST" action="/register">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" id="name2" placeholder="Xemanu Rules..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" id="password2" placeholder="Enter a password..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Code</label>
+                        <input type="password" class="form-control" name="code" id="code" placeholder="Enter the code..." required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

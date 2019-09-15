@@ -1,0 +1,46 @@
+<% include ../partials/head %>
+<body>
+    <% include ../partials/header %>
+    <div class="container mt-5 main">     
+        <form action="/changetitle" method="POST" class="border border-info rounded">
+            <div class="form-group m-3">
+                <input name="newtitle" type="text" class="form-control" placeholder="Enter the new title..." required>
+                <br>
+                <input type="submit" value="Change title" class="btn btn-outline-info">
+            </div>
+        </form>
+        <hr>
+        <form action="/addoption" method="POST" class="border border-info rounded">
+            <div class="form-group m-3">
+                <input name="newoption" type="text" class="form-control" placeholder="Enter the option..." required>
+                <br>
+                <input type="submit" value="Add option" class="btn btn-outline-info">
+            </div>
+        </form>
+        <hr>
+        <form action="/deleteoption" method="POST" class="border border-info rounded">
+            <div class="form-group m-3">
+                <input name="option" type="text" class="form-control" placeholder="Enter the option..." required>
+                <br>
+                <input type="submit" value="Delete option" class="btn btn-outline-info">
+            </div>
+        </form>
+        <hr>
+        <div class="border border-info rounded mb-5">
+            <div class="m-3">
+                <form action="/resetoptions" method="POST">
+                    <div class="form-group">
+                        <input type="submit" value="Reset options" class="btn btn-outline-info">
+                    </div>
+                </form>
+                <form action="/resetvotes" method="POST">
+                    <div class="form-group">
+                        <input type="submit" value="Reset votes" class="btn btn-outline-info">
+                    </div>
+                </form> 
+            </div>
+        </div>  
+    </div>
+    
+</body>
+</html>

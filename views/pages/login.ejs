@@ -1,0 +1,19 @@
+<% include ../partials/head %>
+<body>
+    <% include ../partials/header %>
+    <div class="container mt-5 main">
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="username" id="name1" placeholder="Xemanu Rules..." required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" id="password1" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-outline-info">Log in</button>
+        </form>
+    </div>
+    
+</body>
+</html>

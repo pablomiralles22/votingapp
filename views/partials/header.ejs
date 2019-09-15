@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1">Voting App</span>
+    <% if(user){ %>
+    <span id="loggedas">
+      Logged as <b><%= user.username %></b> |
+      <a class="text-secondary" href="/">Vote</a> |
+      <a class="text-secondary" href="/logout">Log Out</a> <% if(user.admin){ %>
+      | <a class="text-secondary" href="/admin">Admin</a>
+      <% } %>
+    </span>
+    <% } %>
+  </div>
+</nav>
