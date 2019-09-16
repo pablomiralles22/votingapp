@@ -74,37 +74,40 @@ router.post("/register", (req, res) => {
     res.send("Wrong keyword code");
   }
 });
-router.post("/vote", (req, res) => {
+router.post("/vote", async (req, res) => {
   if (!req.user) {
     res.redirect("/login");
   } else if (req.user.voted) {
     res.send("You already voted");
   } else {
-    User.findOne({ username: req.user.username }, (err, doc) => {
+    let promise1 = User.findOne({ username: req.user.username }, (err, doc) => {
       if (err) throw err;
       doc.voted = true;
       doc.save((err, newDoc) => {
         if (err) throw err;
       });
-    }).then(() => {
-      Poll.findOne({}, (err, doc) => {
-        if (err) {
-          throw err;
-        } else {
-          for (let i = 0; i < doc.options.length; i++) {
-            if (req.body[i]) {
-              doc.options[i].cont++;
-            }
-          }
-          doc.markModified("options");
-          doc.save((err, newDoc) => {
-            if (err) throw err;
-          });
-        }
-      }).then(() => {
-        res.redirect("/");
-      });
     });
+
+    let promise2 = Poll.findOne({}, (err, doc) => {
+      if (err) {
+        throw err;
+      } else {
+        for (let i = 0; i < doc.options.length; i++) {
+          if (req.body[i]) {
+            doc.options[i].cont++;
+          }
+        }
+        doc.markModified("options");
+        doc.save((err, newDoc) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    await promise1;
+    await promise2;
+
+    res.redirect("/");
   }
 });
 
