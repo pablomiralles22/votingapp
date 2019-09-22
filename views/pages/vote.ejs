@@ -4,7 +4,7 @@
     <div class="container main mt-5">
         <h1><%= poll.title %></h1>
         <% if(user.voted){ %>
-            <p>Ya has votado. Los resultados actuales son:</p>
+            <p>You have already voted. Current results are:</p>
             <% for(let i=0; i<poll.options.length; i++){ %>
                 <div>
                     <span><%= poll.options[i].title %> | <%= poll.options[i].cont %> votos</span>
