@@ -7,6 +7,13 @@ const Poll = require("./models/poll");
 
 const KEYWORD_CODE = "YOUR_KEYWORD_HERE";
 
+// You can make yourself an admin by setting ADMIN_NAME to your name before registering.
+// You can disable this option by setting ALLOW_ADMIN_SIGNUP to false
+// You can modify in the database as well.
+
+const ADMIN_NAME = "THE NAME YOU WILL BE SIGNING UP WITH";
+const ALLOW_ADMIN_SIGNUP = true;
+
 // GET
 
 router.get("/", (req, res) => {
@@ -57,7 +64,11 @@ router.post("/register", (req, res) => {
   console.log("registering user");
   if (req.body.code === KEYWORD_CODE) {
     User.register(
-      new User({ username: req.body.name, admin: false, voted: false }),
+      new User({
+        username: req.body.name,
+        admin: ALLOW_ADMIN_SIGNUP && req.body.name === ADMIN_NAME,
+        voted: false
+      }),
       req.body.password,
       function(err) {
         if (err) {
